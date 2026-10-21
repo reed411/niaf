@@ -650,10 +650,11 @@
           </div>
         </div>
 
-        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Select Winning Team (2 pts to each player):</label>
+        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Select Team Outcome:</label>
         <div class="team-winner-toggle" style="margin-bottom: 20px;">
-          <button type="button" class="winner-btn" id="r1-win-t1" onclick="setTeamWinner(1, 'A')">Team A Wins</button>
-          <button type="button" class="winner-btn" id="r1-win-t2" onclick="setTeamWinner(1, 'B')">Team B Wins</button>
+          <button type="button" class="winner-btn" id="r1-win-t1" onclick="setTeamWinner(1, 'A')">Team A Wins (+2 pts)</button>
+          <button type="button" class="winner-btn" id="r1-win-tie" onclick="setTeamWinner(1, 'Tie')">Tie (1 pt each)</button>
+          <button type="button" class="winner-btn" id="r1-win-t2" onclick="setTeamWinner(1, 'B')">Team B Wins (+2 pts)</button>
         </div>
 
         <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Individual Net Scores (Points: 1st=4, 2nd=3, 3rd=2, 4th=1):</label>
@@ -678,7 +679,7 @@
         <span class="round-badge scramble">Team Points Only</span>
       </div>
       <div class="round-body">
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">No individual net points or net scores counted for Round 2. Winning team gets 2 team points each.</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">No individual net points or net scores counted for Round 2.</p>
         <div class="team-select-grid">
           <div>
             <label style="font-weight: bold; font-size: 0.85rem;">Team A Pair:</label>
@@ -696,10 +697,11 @@
           </div>
         </div>
 
-        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Select Winning Team (2 pts to each player):</label>
+        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Select Team Outcome:</label>
         <div class="team-winner-toggle">
-          <button type="button" class="winner-btn" id="r2-win-t1" onclick="setTeamWinner(2, 'A')">Team A Wins</button>
-          <button type="button" class="winner-btn" id="r2-win-t2" onclick="setTeamWinner(2, 'B')">Team B Wins</button>
+          <button type="button" class="winner-btn" id="r2-win-t1" onclick="setTeamWinner(2, 'A')">Team A Wins (+2 pts)</button>
+          <button type="button" class="winner-btn" id="r2-win-tie" onclick="setTeamWinner(2, 'Tie')">Tie (1 pt each)</button>
+          <button type="button" class="winner-btn" id="r2-win-t2" onclick="setTeamWinner(2, 'B')">Team B Wins (+2 pts)</button>
         </div>
         <button class="btn" style="margin-top: 15px;" onclick="saveRound(2)">Save Round 2</button>
       </div>
@@ -733,10 +735,11 @@
           </div>
         </div>
 
-        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Select Winning Team (2 pts to each player):</label>
+        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Select Team Outcome:</label>
         <div class="team-winner-toggle" style="margin-bottom: 20px;">
-          <button type="button" class="winner-btn" id="r3-win-t1" onclick="setTeamWinner(3, 'A')">Team A Wins</button>
-          <button type="button" class="winner-btn" id="r3-win-t2" onclick="setTeamWinner(3, 'B')">Team B Wins</button>
+          <button type="button" class="winner-btn" id="r3-win-t1" onclick="setTeamWinner(3, 'A')">Team A Wins (+2 pts)</button>
+          <button type="button" class="winner-btn" id="r3-win-tie" onclick="setTeamWinner(3, 'Tie')">Tie (1 pt each)</button>
+          <button type="button" class="winner-btn" id="r3-win-t2" onclick="setTeamWinner(3, 'B')">Team B Wins (+2 pts)</button>
         </div>
 
         <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Individual Net Scores:</label>
@@ -778,10 +781,11 @@
           </div>
         </div>
 
-        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Select Winning Team (2 pts to each player):</label>
+        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Select Team Outcome:</label>
         <div class="team-winner-toggle" style="margin-bottom: 20px;">
-          <button type="button" class="winner-btn" id="r4-win-t1" onclick="setTeamWinner(4, 'A')">Team A Wins</button>
-          <button type="button" class="winner-btn" id="r4-win-t2" onclick="setTeamWinner(4, 'B')">Team B Wins</button>
+          <button type="button" class="winner-btn" id="r4-win-t1" onclick="setTeamWinner(4, 'A')">Team A Wins (+2 pts)</button>
+          <button type="button" class="winner-btn" id="r4-win-tie" onclick="setTeamWinner(4, 'Tie')">Tie (1 pt each)</button>
+          <button type="button" class="winner-btn" id="r4-win-t2" onclick="setTeamWinner(4, 'B')">Team B Wins (+2 pts)</button>
         </div>
 
         <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Individual Net Scores:</label>
@@ -806,7 +810,7 @@
         <span class="round-badge" style="background:#d4af37; color:#000;">High Stakes</span>
       </div>
       <div class="round-body">
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Individual Net Round Only (No Teams). Points: 1st=6, 2nd=4, 3rd=2, 4th=0.</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Individual Net Round Only (No Teams). Points: 1st=6, 2nd=4, 3rd=2, 4th=0 (splits applied on ties).</p>
         <div class="input-grid">
           <div class="input-group"><label>Reed Campbell</label><input type="number" id="r5-score-Reed" placeholder="Net Score"></div>
           <div class="input-group"><label>Mike Detogni</label><input type="number" id="r5-score-Mike" placeholder="Net Score"></div>
@@ -848,10 +852,10 @@
     <div class="rules-card">
       <h3>NIAF Invitational Official Rules</h3>
       <ul>
-        <li><strong>Rounds 1, 3, 4:</strong> Winning Team = 2 pts each player. Individual Net: 1st=4, 2nd=3, 3rd=2, 4th=1.</li>
-        <li><strong>Round 2 (Drunk Scramble):</strong> Winning Team = 2 pts each player. No individual net points.</li>
-        <li><strong>Round 5 (Final Round):</strong> No team points. Individual Net: 1st=6, 2nd=4, 3rd=2, 4th=0.</li>
-        <li><strong>Overall 5-Round Low Net Bonus:</strong> Awarded automatically at the end: 1st=6, 2nd=4, 3rd=2, 4th=0.</li>
+        <li><strong>Rounds 1, 3, 4:</strong> Winning Team = 2 pts each player (Ties = 1 pt each). Individual Net: 1st=4, 2nd=3, 3rd=2, 4th=1 (Ties split evenly).</li>
+        <li><strong>Round 2 (Drunk Scramble):</strong> Winning Team = 2 pts each player (Ties = 1 pt each). No individual net points.</li>
+        <li><strong>Round 5 (Final Round):</strong> No team points. Individual Net: 1st=6, 2nd=4, 3rd=2, 4th=0 (Ties split evenly).</li>
+        <li><strong>Overall 5-Round Low Net Bonus:</strong> Awarded automatically at the end: 1st=6, 2nd=4, 3rd=2, 4th=0 (Ties split evenly).</li>
       </ul>
     </div>
 
@@ -873,11 +877,11 @@
 
     let winnerState = { 1: null, 2: null, 3: null, 4: null };
 
-    function setTeamWinner(round, team) {
-      if (winnerState[round] === team) {
+    function setTeamWinner(round, status) {
+      if (winnerState[round] === status) {
         winnerState[round] = null;
       } else {
-        winnerState[round] = team;
+        winnerState[round] = status;
       }
       updateWinnerToggleUI(round);
       calculateStandings();
@@ -885,14 +889,47 @@
 
     function updateWinnerToggleUI(round) {
       const btnA = document.getElementById(`r${round}-win-t1`);
+      const btnTie = document.getElementById(`r${round}-win-tie`);
       const btnB = document.getElementById(`r${round}-win-t2`);
-      if (!btnA || !btnB) return;
+      if (!btnA || !btnTie || !btnB) return;
 
       btnA.classList.remove("active");
+      btnTie.classList.remove("active");
       btnB.classList.remove("active");
 
       if (winnerState[round] === 'A') btnA.classList.add("active");
+      if (winnerState[round] === 'Tie') btnTie.classList.add("active");
       if (winnerState[round] === 'B') btnB.classList.add("active");
+    }
+
+    // Helper to distribute points across tied group (e.g. sharing rank 1 and 2 points)
+    function assignPointsWithTies(scoresArray, pointsMap) {
+      let result = {};
+      let i = 0;
+      while (i < scoresArray.length) {
+        let j = i;
+        // Find all players with the exact same score
+        while (j < scoresArray.length && scoresArray[j].score === scoresArray[i].score) {
+          j++;
+        }
+        
+        // Sum up the point values for positions from i to j-1
+        let totalPointsForGroup = 0;
+        let count = j - i;
+        for (let k = i; k < j; k++) {
+          if (k < pointsMap.length) {
+            totalPointsForGroup += pointsMap[k];
+          }
+        }
+        let sharedPts = totalPointsForGroup / count;
+
+        // Assign shared points to all tied players
+        for (let k = i; k < j; k++) {
+          result[scoresArray[k].player] = sharedPts;
+        }
+        i = j;
+      }
+      return result;
     }
 
     function calculateStandings() {
@@ -901,23 +938,31 @@
         stats[p.full] = { name: p.full, teamPts: 0, indPts: 0, overallBonusPts: 0, totalNetScore: 0, roundsPlayed: 0 };
       });
 
-      // R1 - R4 Team Points based on manual toggle Selection
+      // R1 - R4 Team Points (handling A wins, B wins, or Tie giving 1 pt each)
       [1, 2, 3, 4].forEach(r => {
-        const winningTeam = winnerState[r];
-        if (winningTeam === 'A') {
+        const outcome = winnerState[r];
+        if (outcome === 'A') {
           const p1 = document.getElementById(`r${r}-t1p1`).value;
           const p2 = document.getElementById(`r${r}-t1p2`).value;
           if (stats[p1]) stats[p1].teamPts += 2;
           if (stats[p2]) stats[p2].teamPts += 2;
-        } else if (winningTeam === 'B') {
+        } else if (outcome === 'B') {
           const p1 = document.getElementById(`r${r}-t2p1`).value;
           const p2 = document.getElementById(`r${r}-t2p2`).value;
           if (stats[p1]) stats[p1].teamPts += 2;
           if (stats[p2]) stats[p2].teamPts += 2;
+        } else if (outcome === 'Tie') {
+          const t1p1 = document.getElementById(`r${r}-t1p1`).value;
+          const t1p2 = document.getElementById(`r${r}-t1p2`).value;
+          const t2p1 = document.getElementById(`r${r}-t2p1`).value;
+          const t2p2 = document.getElementById(`r${r}-t2p2`).value;
+          [t1p1, t1p2, t2p1, t2p2].forEach(p => {
+            if (stats[p]) stats[p].teamPts += 1;
+          });
         }
       });
 
-      // Individual Net Scores for R1, R3, R4
+      // Individual Net Scores for R1, R3, R4 (Points: 4, 3, 2, 1) with tie-splitting
       [1, 3, 4].forEach(r => {
         let scores = [];
         PLAYERS.forEach(p => {
@@ -931,14 +976,13 @@
 
         scores.sort((a, b) => a.score - b.score);
         const ptsMap = [4, 3, 2, 1];
-        scores.forEach((item, index) => {
-          if (index < ptsMap.length) {
-            stats[item.player].indPts += ptsMap[index];
-          }
+        let assigned = assignPointsWithTies(scores, ptsMap);
+        Object.keys(assigned).forEach(player => {
+          stats[player].indPts += assigned[player];
         });
       });
 
-      // Round 5 Individual Net
+      // Round 5 Individual Net (Points: 6, 4, 2, 0) with tie-splitting
       let r5Scores = [];
       PLAYERS.forEach(p => {
         const val = parseFloat(document.getElementById(`r5-score-` + p.key).value);
@@ -951,22 +995,20 @@
 
       r5Scores.sort((a, b) => a.score - b.score);
       const r5PtsMap = [6, 4, 2, 0];
-      r5Scores.forEach((item, index) => {
-        if (index < r5PtsMap.length) {
-          stats[item.player].indPts += r5PtsMap[index];
-        }
+      let r5Assigned = assignPointsWithTies(r5Scores, r5PtsMap);
+      Object.keys(r5Assigned).forEach(player => {
+        stats[player].indPts += r5Assigned[player];
       });
 
-      // Overall Low Net Bonus (if all net rounds 1,3,4,5 are completed)
+      // Overall Low Net Bonus (if all net rounds 1,3,4,5 are completed) with tie-splitting
       let allNetRoundsComplete = PLAYERS.every(p => stats[p.full].roundsPlayed >= 4);
       if (allNetRoundsComplete) {
-        let netTotals = PLAYERS.map(p => ({ player: p.full, totalNet: stats[p.full].totalNetScore }));
-        netTotals.sort((a, b) => a.totalNet - b.totalNet);
+        let netTotals = PLAYERS.map(p => ({ player: p.full, score: stats[p.full].totalNetScore }));
+        netTotals.sort((a, b) => a.score - b.score);
         const overallBonusMap = [6, 4, 2, 0];
-        netTotals.forEach((item, index) => {
-          if (index < overallBonusMap.length) {
-            stats[item.player].overallBonusPts = overallBonusMap[index];
-          }
+        let bonusAssigned = assignPointsWithTies(netTotals, overallBonusMap);
+        Object.keys(bonusAssigned).forEach(player => {
+          stats[player].overallBonusPts += bonusAssigned[player];
         });
       }
 
