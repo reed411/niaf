@@ -35,7 +35,7 @@
 
     /* HEADER BANNER WITH ONION CREEK HERO IMAGE */
     header {
-      background: linear-gradient(180deg, rgba(4, 26, 18, 0.82) 0%, rgba(10, 56, 37, 0.92) 100%),
+      background: linear-gradient(180deg, rgba(4, 26, 18, 0.85) 0%, rgba(10, 56, 37, 0.95) 100%),
                   url('https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
       color: white;
       text-align: center;
@@ -49,7 +49,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 15px;
       margin-bottom: 15px;
     }
 
@@ -99,13 +98,14 @@
       font-weight: 700;
     }
 
+    /* DEFENDING CHAMP BANNER */
     .defending-champ-banner {
       background: linear-gradient(135deg, var(--masters-gold) 0%, var(--masters-yellow) 100%);
       color: var(--masters-dark);
       text-align: center;
       padding: 16px 20px;
       font-family: 'Cinzel', serif;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       font-weight: 900;
       letter-spacing: 2.5px;
       text-transform: uppercase;
@@ -342,6 +342,33 @@
       border: 1px solid var(--masters-border);
     }
 
+    .team-winner-toggle {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .winner-btn {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid var(--masters-border);
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      transition: all 0.2s ease;
+    }
+
+    .winner-btn.active {
+      background: var(--masters-gold);
+      color: var(--masters-dark);
+      border-color: var(--masters-gold);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
     .btn {
       background: var(--masters-green);
       color: white;
@@ -394,7 +421,59 @@
       margin-left: 22px;
     }
 
-    /* REALLY BIG CRAN G FOOTER */
+    /* FORMER CHAMPIONS CARD */
+    .history-card {
+      background: linear-gradient(135deg, var(--masters-dark) 0%, var(--masters-green) 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 30px;
+      margin-bottom: 40px;
+      border: 2px solid var(--masters-gold);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    .history-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: var(--masters-yellow);
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .champions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .champ-item {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .champ-year {
+      font-family: 'Cinzel', serif;
+      color: var(--masters-gold);
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .champ-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #ffffff;
+    }
+
+    /* REALLY BIG CRAN G FOOTER WITH SUBTLE EASTER EGG */
     footer.cran-g-footer {
       background: linear-gradient(180deg, var(--masters-green) 0%, var(--masters-dark) 100%);
       color: var(--masters-yellow);
@@ -404,6 +483,14 @@
       position: relative;
       overflow: hidden;
       margin-top: 40px;
+    }
+
+    .subtle-easter-egg {
+      font-size: 0.65rem;
+      color: rgba(240, 237, 228, 0.25);
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      user-select: none;
     }
 
     .cran-g-text {
@@ -462,7 +549,7 @@
 
   <!-- DEFENDING CHAMPION BANNER -->
   <div class="defending-champ-banner">
-    🏆 Reed Defending Champ 2026 🏆
+    🏆 Reed Campbell — Defending Champion 2025 🏆
   </div>
 
   <div class="container">
@@ -528,35 +615,33 @@
       <div class="round-body">
         <div class="team-select-grid">
           <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team A (2 pts each to winner):</label>
+            <label style="font-weight: bold; font-size: 0.85rem;">Team A Pair:</label>
             <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r1-t1p1"><option value="Reed">Reed</option><option value="Mike">Mike</option><option value="Brian">Brian</option><option value="Andrew">Andrew</option></select>
-              <select id="r1-t1p2"><option value="Mike" selected>Mike</option><option value="Reed">Reed</option><option value="Brian">Brian</option><option value="Andrew">Andrew</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team A Gross/Net Total:</label>
-              <input type="number" id="r1-t1-score" placeholder="Net Total" style="width: 110px;">
+              <select id="r1-t1p1" onchange="calculateStandings()"><option value="Reed Campbell">Reed Campbell</option><option value="Mike Detogni">Mike Detogni</option><option value="Brian Thomas">Brian Thomas</option><option value="Andrew Certilman">Andrew Certilman</option></select>
+              <select id="r1-t1p2" onchange="calculateStandings()"><option value="Mike Detogni" selected>Mike Detogni</option><option value="Reed Campbell">Reed Campbell</option><option value="Brian Thomas">Brian Thomas</option><option value="Andrew Certilman">Andrew Certilman</option></select>
             </div>
           </div>
           <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team B:</label>
+            <label style="font-weight: bold; font-size: 0.85rem;">Team B Pair:</label>
             <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r1-t2p1"><option value="Brian" selected>Brian</option><option value="Reed">Reed</option><option value="Mike">Mike</option><option value="Andrew">Andrew</option></select>
-              <select id="r1-t2p2"><option value="Andrew" selected>Andrew</option><option value="Reed">Reed</option><option value="Mike">Mike</option><option value="Brian">Brian</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team B Gross/Net Total:</label>
-              <input type="number" id="r1-t2-score" placeholder="Net Total" style="width: 110px;">
+              <select id="r1-t2p1" onchange="calculateStandings()"><option value="Brian Thomas" selected>Brian Thomas</option><option value="Reed Campbell">Reed Campbell</option><option value="Mike Detogni">Mike Detogni</option><option value="Andrew Certilman">Andrew Certilman</option></select>
+              <select id="r1-t2p2" onchange="calculateStandings()"><option value="Andrew Certilman" selected>Andrew Certilman</option><option value="Reed Campbell">Reed Campbell</option><option value="Mike Detogni">Mike Detogni</option><option value="Brian Thomas">Brian Thomas</option></select>
             </div>
           </div>
         </div>
 
+        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Select Winning Team (2 pts to each player):</label>
+        <div class="team-winner-toggle" style="margin-bottom: 20px;">
+          <button type="button" class="winner-btn" id="r1-win-t1" onclick="setTeamWinner(1, 'A')">Team A Wins</button>
+          <button type="button" class="winner-btn" id="r1-win-t2" onclick="setTeamWinner(1, 'B')">Team B Wins</button>
+        </div>
+
         <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Individual Net Scores (Points: 1st=4, 2nd=3, 3rd=2, 4th=1):</label>
         <div class="input-grid">
-          <div class="input-group"><label>Reed</label><input type="number" id="r1-score-Reed" placeholder="Net Score"></div>
-          <div class="input-group"><label>Mike</label><input type="number" id="r1-score-Mike" placeholder="Net Score"></div>
-          <div class="input-group"><label>Brian</label><input type="number" id="r1-score-Brian" placeholder="Net Score"></div>
-          <div class="input-group"><label>Andrew</label><input type="number" id="r1-score-Andrew" placeholder="Net Score"></div>
+          <div class="input-group"><label>Reed Campbell</label><input type="number" id="r1-score-Reed" placeholder="Net Score"></div>
+          <div class="input-group"><label>Mike Detogni</label><input type="number" id="r1-score-Mike" placeholder="Net Score"></div>
+          <div class="input-group"><label>Brian Thomas</label><input type="number" id="r1-score-Brian" placeholder="Net Score"></div>
+          <div class="input-group"><label>Andrew Certilman</label><input type="number" id="r1-score-Andrew" placeholder="Net Score"></div>
         </div>
         <button class="btn" onclick="saveRound(1)">Save Round 1</button>
       </div>
@@ -571,32 +656,30 @@
         <span class="round-badge scramble">Team Points Only</span>
       </div>
       <div class="round-body">
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">No individual net points awarded for Round 2. Winning team gets 2 team points each.</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">No individual net points or net scores counted for Round 2. Winning team gets 2 team points each.</p>
         <div class="team-select-grid">
           <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team A:</label>
+            <label style="font-weight: bold; font-size: 0.85rem;">Team A Pair:</label>
             <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r2-t1p1"><option value="Reed">Reed</option><option value="Brian" selected>Brian</option></select>
-              <select id="r2-t1p2"><option value="Brian" selected>Brian</option><option value="Reed">Reed</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team A Scramble Score:</label>
-              <input type="number" id="r2-t1-score" placeholder="Score" style="width: 110px;">
+              <select id="r2-t1p1" onchange="calculateStandings()"><option value="Reed Campbell">Reed Campbell</option><option value="Brian Thomas" selected>Brian Thomas</option></select>
+              <select id="r2-t1p2" onchange="calculateStandings()"><option value="Brian Thomas" selected>Brian Thomas</option><option value="Reed Campbell">Reed Campbell</option></select>
             </div>
           </div>
           <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team B:</label>
+            <label style="font-weight: bold; font-size: 0.85rem;">Team B Pair:</label>
             <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r2-t2p1"><option value="Mike" selected>Mike</option></select>
-              <select id="r2-t2p2"><option value="Andrew" selected>Andrew</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team B Scramble Score:</label>
-              <input type="number" id="r2-t2-score" placeholder="Score" style="width: 110px;">
+              <select id="r2-t2p1" onchange="calculateStandings()"><option value="Mike Detogni" selected>Mike Detogni</option></select>
+              <select id="r2-t2p2" onchange="calculateStandings()"><option value="Andrew Certilman" selected>Andrew Certilman</option></select>
             </div>
           </div>
         </div>
-        <button class="btn" onclick="saveRound(2)">Save Round 2</button>
+
+        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Select Winning Team (2 pts to each player):</label>
+        <div class="team-winner-toggle">
+          <button type="button" class="winner-btn" id="r2-win-t1" onclick="setTeamWinner(2, 'A')">Team A Wins</button>
+          <button type="button" class="winner-btn" id="r2-win-t2" onclick="setTeamWinner(2, 'B')">Team B Wins</button>
+        </div>
+        <button class="btn" style="margin-top: 15px;" onclick="saveRound(2)">Save Round 2</button>
       </div>
     </div>
 
@@ -611,35 +694,33 @@
       <div class="round-body">
         <div class="team-select-grid">
           <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team A:</label>
+            <label style="font-weight: bold; font-size: 0.85rem;">Team A Pair:</label>
             <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r3-t1p1"><option value="Reed">Reed</option><option value="Andrew">Andrew</option></select>
-              <select id="r3-t1p2"><option value="Andrew" selected>Andrew</option><option value="Reed">Reed</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team A Net Total:</label>
-              <input type="number" id="r3-t1-score" placeholder="Net Total" style="width: 110px;">
+              <select id="r3-t1p1" onchange="calculateStandings()"><option value="Reed Campbell">Reed Campbell</option><option value="Andrew Certilman">Andrew Certilman</option></select>
+              <select id="r3-t1p2" onchange="calculateStandings()"><option value="Andrew Certilman" selected>Andrew Certilman</option><option value="Reed Campbell">Reed Campbell</option></select>
             </div>
           </div>
           <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team B:</label>
+            <label style="font-weight: bold; font-size: 0.85rem;">Team B Pair:</label>
             <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r3-t2p1"><option value="Mike" selected>Mike</option></select>
-              <select id="r3-t2p2"><option value="Brian" selected>Brian</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team B Net Total:</label>
-              <input type="number" id="r3-t2-score" placeholder="Net Total" style="width: 110px;">
+              <select id="r3-t2p1" onchange="calculateStandings()"><option value="Mike Detogni" selected>Mike Detogni</option></select>
+              <select id="r3-t2p2" onchange="calculateStandings()"><option value="Brian Thomas" selected>Brian Thomas</option></select>
             </div>
           </div>
         </div>
 
+        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Select Winning Team (2 pts to each player):</label>
+        <div class="team-winner-toggle" style="margin-bottom: 20px;">
+          <button type="button" class="winner-btn" id="r3-win-t1" onclick="setTeamWinner(3, 'A')">Team A Wins</button>
+          <button type="button" class="winner-btn" id="r3-win-t2" onclick="setTeamWinner(3, 'B')">Team B Wins</button>
+        </div>
+
         <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Individual Net Scores:</label>
         <div class="input-grid">
-          <div class="input-group"><label>Reed</label><input type="number" id="r3-score-Reed" placeholder="Net Score"></div>
-          <div class="input-group"><label>Mike</label><input type="number" id="r3-score-Mike" placeholder="Net Score"></div>
-          <div class="input-group"><label>Brian</label><input type="number" id="r3-score-Brian" placeholder="Net Score"></div>
-          <div class="input-group"><label>Andrew</label><input type="number" id="r3-score-Andrew" placeholder="Net Score"></div>
+          <div class="input-group"><label>Reed Campbell</label><input type="number" id="r3-score-Reed" placeholder="Net Score"></div>
+          <div class="input-group"><label>Mike Detogni</label><input type="number" id="r3-score-Mike" placeholder="Net Score"></div>
+          <div class="input-group"><label>Brian Thomas</label><input type="number" id="r3-score-Brian" placeholder="Net Score"></div>
+          <div class="input-group"><label>Andrew Certilman</label><input type="number" id="r3-score-Andrew" placeholder="Net Score"></div>
         </div>
         <button class="btn" onclick="saveRound(3)">Save Round 3</button>
       </div>
@@ -656,35 +737,33 @@
       <div class="round-body">
         <div class="team-select-grid">
           <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team A:</label>
+            <label style="font-weight: bold; font-size: 0.85rem;">Team A Pair:</label>
             <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r4-t1p1"><option value="Reed">Reed</option><option value="Mike">Mike</option></select>
-              <select id="r4-t1p2"><option value="Mike" selected>Mike</option><option value="Reed">Reed</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team A Net Total:</label>
-              <input type="number" id="r4-t1-score" placeholder="Net Total" style="width: 110px;">
+              <select id="r4-t1p1" onchange="calculateStandings()"><option value="Reed Campbell">Reed Campbell</option><option value="Mike Detogni">Mike Detogni</option></select>
+              <select id="r4-t1p2" onchange="calculateStandings()"><option value="Mike Detogni" selected>Mike Detogni</option><option value="Reed Campbell">Reed Campbell</option></select>
             </div>
           </div>
           <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team B:</label>
+            <label style="font-weight: bold; font-size: 0.85rem;">Team B Pair:</label>
             <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r4-t2p1"><option value="Brian" selected>Brian</option></select>
-              <select id="r4-t2p2"><option value="Andrew" selected>Andrew</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team B Net Total:</label>
-              <input type="number" id="r4-t2-score" placeholder="Net Total" style="width: 110px;">
+              <select id="r4-t2p1" onchange="calculateStandings()"><option value="Brian Thomas" selected>Brian Thomas</option></select>
+              <select id="r4-t2p2" onchange="calculateStandings()"><option value="Andrew Certilman" selected>Andrew Certilman</option></select>
             </div>
           </div>
         </div>
 
+        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Select Winning Team (2 pts to each player):</label>
+        <div class="team-winner-toggle" style="margin-bottom: 20px;">
+          <button type="button" class="winner-btn" id="r4-win-t1" onclick="setTeamWinner(4, 'A')">Team A Wins</button>
+          <button type="button" class="winner-btn" id="r4-win-t2" onclick="setTeamWinner(4, 'B')">Team B Wins</button>
+        </div>
+
         <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Individual Net Scores:</label>
         <div class="input-grid">
-          <div class="input-group"><label>Reed</label><input type="number" id="r4-score-Reed" placeholder="Net Score"></div>
-          <div class="input-group"><label>Mike</label><input type="number" id="r4-score-Mike" placeholder="Net Score"></div>
-          <div class="input-group"><label>Brian</label><input type="number" id="r4-score-Brian" placeholder="Net Score"></div>
-          <div class="input-group"><label>Andrew</label><input type="number" id="r4-score-Andrew" placeholder="Net Score"></div>
+          <div class="input-group"><label>Reed Campbell</label><input type="number" id="r4-score-Reed" placeholder="Net Score"></div>
+          <div class="input-group"><label>Mike Detogni</label><input type="number" id="r4-score-Mike" placeholder="Net Score"></div>
+          <div class="input-group"><label>Brian Thomas</label><input type="number" id="r4-score-Brian" placeholder="Net Score"></div>
+          <div class="input-group"><label>Andrew Certilman</label><input type="number" id="r4-score-Andrew" placeholder="Net Score"></div>
         </div>
         <button class="btn" onclick="saveRound(4)">Save Round 4</button>
       </div>
@@ -701,12 +780,39 @@
       <div class="round-body">
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Individual Net Round Only (No Teams). Points: 1st=6, 2nd=4, 3rd=2, 4th=0.</p>
         <div class="input-grid">
-          <div class="input-group"><label>Reed</label><input type="number" id="r5-score-Reed" placeholder="Net Score"></div>
-          <div class="input-group"><label>Mike</label><input type="number" id="r5-score-Mike" placeholder="Net Score"></div>
-          <div class="input-group"><label>Brian</label><input type="number" id="r5-score-Brian" placeholder="Net Score"></div>
-          <div class="input-group"><label>Andrew</label><input type="number" id="r5-score-Andrew" placeholder="Net Score"></div>
+          <div class="input-group"><label>Reed Campbell</label><input type="number" id="r5-score-Reed" placeholder="Net Score"></div>
+          <div class="input-group"><label>Mike Detogni</label><input type="number" id="r5-score-Mike" placeholder="Net Score"></div>
+          <div class="input-group"><label>Brian Thomas</label><input type="number" id="r5-score-Brian" placeholder="Net Score"></div>
+          <div class="input-group"><label>Andrew Certilman</label><input type="number" id="r5-score-Andrew" placeholder="Net Score"></div>
         </div>
         <button class="btn" onclick="saveRound(5)">Save Final Round</button>
+      </div>
+    </div>
+
+    <!-- FORMER CHAMPIONS HISTORY CARD -->
+    <div class="history-card">
+      <h3>Former Champions</h3>
+      <div class="champions-grid">
+        <div class="champ-item">
+          <div class="champ-year">2021</div>
+          <div class="champ-name">Reed Campbell</div>
+        </div>
+        <div class="champ-item">
+          <div class="champ-year">2022</div>
+          <div class="champ-name">Mike Detogni</div>
+        </div>
+        <div class="champ-item">
+          <div class="champ-year">2023</div>
+          <div class="champ-name">Andrew Certilman</div>
+        </div>
+        <div class="champ-item">
+          <div class="champ-year">2024</div>
+          <div class="champ-name">Brian Thomas</div>
+        </div>
+        <div class="champ-item">
+          <div class="champ-year">2025</div>
+          <div class="champ-name">Reed Campbell</div>
+        </div>
       </div>
     </div>
 
@@ -723,34 +829,64 @@
 
   </div>
 
-  <!-- REALLY BIG CRAN G FOOTER -->
+  <!-- REALLY BIG CRAN G FOOTER WITH SUBTLE EASTER EGG -->
   <footer class="cran-g-footer">
+    <div class="subtle-easter-egg">Andrew is NF</div>
     <div class="cran-g-text">CRAN G</div>
     <div class="cran-g-sub">Onion Creek Club • The NIAF Invitational</div>
   </footer>
 
   <script>
-    const PLAYERS = ["Reed", "Mike", "Brian", "Andrew"];
+    const PLAYERS = [
+      { full: "Reed Campbell", key: "Reed" },
+      { full: "Mike Detogni", key: "Mike" },
+      { full: "Brian Thomas", key: "Brian" },
+      { full: "Andrew Certilman", key: "Andrew" }
+    ];
+
+    let winnerState = { 1: null, 2: null, 3: null, 4: null };
+
+    function setTeamWinner(round, team) {
+      if (winnerState[round] === team) {
+        winnerState[round] = null;
+      } else {
+        winnerState[round] = team;
+      }
+      updateWinnerToggleUI(round);
+      calculateStandings();
+    }
+
+    function updateWinnerToggleUI(round) {
+      const btnA = document.getElementById(`r${round}-win-t1`);
+      const btnB = document.getElementById(`r${round}-win-t2`);
+      if (!btnA || !btnB) return;
+
+      btnA.classList.remove("active");
+      btnB.classList.remove("active");
+
+      if (winnerState[round] === 'A') btnA.classList.add("active");
+      if (winnerState[round] === 'B') btnB.classList.add("active");
+    }
 
     function calculateStandings() {
       let stats = {};
       PLAYERS.forEach(p => {
-        stats[p] = { name: p, teamPts: 0, indPts: 0, overallBonusPts: 0, totalNetScore: 0, roundsPlayed: 0 };
+        stats[p.full] = { name: p.full, teamPts: 0, indPts: 0, overallBonusPts: 0, totalNetScore: 0, roundsPlayed: 0 };
       });
 
-      // R1 - R4 Team Points
+      // R1 - R4 Team Points based on manual toggle Selection
       [1, 2, 3, 4].forEach(r => {
-        const t1Score = parseFloat(document.getElementById(`r${r}-t1-score`).value);
-        const t2Score = parseFloat(document.getElementById(`r${r}-t2-score`).value);
-
-        if (!isNaN(t1Score) && !isNaN(t2Score)) {
-          let winningPlayers = [];
-          if (t1Score < t2Score) {
-            winningPlayers = [document.getElementById(`r${r}-t1p1`).value, document.getElementById(`r${r}-t1p2`).value];
-          } else if (t2Score < t1Score) {
-            winningPlayers = [document.getElementById(`r${r}-t2p1`).value, document.getElementById(`r${r}-t2p2`).value];
-          }
-          winningPlayers.forEach(p => { if (stats[p]) stats[p].teamPts += 2; });
+        const winningTeam = winnerState[r];
+        if (winningTeam === 'A') {
+          const p1 = document.getElementById(`r${r}-t1p1`).value;
+          const p2 = document.getElementById(`r${r}-t1p2`).value;
+          if (stats[p1]) stats[p1].teamPts += 2;
+          if (stats[p2]) stats[p2].teamPts += 2;
+        } else if (winningTeam === 'B') {
+          const p1 = document.getElementById(`r${r}-t2p1`).value;
+          const p2 = document.getElementById(`r${r}-t2p2`).value;
+          if (stats[p1]) stats[p1].teamPts += 2;
+          if (stats[p2]) stats[p2].teamPts += 2;
         }
       });
 
@@ -758,11 +894,11 @@
       [1, 3, 4].forEach(r => {
         let scores = [];
         PLAYERS.forEach(p => {
-          const val = parseFloat(document.getElementById(`r${r}-score-${p}`).value);
+          const val = parseFloat(document.getElementById(`r${r}-score-${p.key}`).value);
           if (!isNaN(val)) {
-            scores.push({ player: p, score: val });
-            stats[p].totalNetScore += val;
-            stats[p].roundsPlayed += 1;
+            scores.push({ player: p.full, score: val });
+            stats[p.full].totalNetScore += val;
+            stats[p.full].roundsPlayed += 1;
           }
         });
 
@@ -778,11 +914,11 @@
       // Round 5 Individual Net
       let r5Scores = [];
       PLAYERS.forEach(p => {
-        const val = parseFloat(document.getElementById(`r5-score-${p}`).value);
+        const val = parseFloat(document.getElementById(`r5-score-` + p.key).value);
         if (!isNaN(val)) {
-          r5Scores.push({ player: p, score: val });
-          stats[p].totalNetScore += val;
-          stats[p].roundsPlayed += 1;
+          r5Scores.push({ player: p.full, score: val });
+          stats[p.full].totalNetScore += val;
+          stats[p.full].roundsPlayed += 1;
         }
       });
 
@@ -794,10 +930,10 @@
         }
       });
 
-      // Overall Low Net Bonus
-      let allNetRoundsComplete = PLAYERS.every(p => stats[p].roundsPlayed >= 4);
+      // Overall Low Net Bonus (if all net rounds 1,3,4,5 are completed)
+      let allNetRoundsComplete = PLAYERS.every(p => stats[p.full].roundsPlayed >= 4);
       if (allNetRoundsComplete) {
-        let netTotals = PLAYERS.map(p => ({ player: p, totalNet: stats[p].totalNetScore }));
+        let netTotals = PLAYERS.map(p => ({ player: p.full, totalNet: stats[p.full].totalNetScore }));
         netTotals.sort((a, b) => a.totalNet - b.totalNet);
         const overallBonusMap = [6, 4, 2, 0];
         netTotals.forEach((item, index) => {
@@ -809,12 +945,12 @@
 
       // Format array for render
       let standings = PLAYERS.map(p => {
-        const totalPts = stats[p].teamPts + stats[p].indPts + stats[p].overallBonusPts;
+        const totalPts = stats[p.full].teamPts + stats[p.full].indPts + stats[p.full].overallBonusPts;
         return {
-          name: p,
-          teamPts: stats[p].teamPts,
-          indPts: stats[p].indPts + stats[p].overallBonusPts,
-          overallNet: stats[p].roundsPlayed > 0 ? stats[p].totalNetScore : "—",
+          name: p.full,
+          teamPts: stats[p.full].teamPts,
+          indPts: stats[p.full].indPts + stats[p.full].overallBonusPts,
+          overallNet: stats[p.full].roundsPlayed > 0 ? stats[p.full].totalNetScore : "—",
           totalPts: totalPts
         };
       });
@@ -859,6 +995,7 @@
       inputs.forEach(input => {
         if (input.id) data[input.id] = input.value;
       });
+      data["winnerState"] = winnerState;
       localStorage.setItem("niaf_input_cache", JSON.stringify(data));
     }
 
@@ -866,16 +1003,22 @@
       const cached = localStorage.getItem("niaf_input_cache");
       if (cached) {
         const data = JSON.parse(cached);
+        if (data.winnerState) {
+          winnerState = data.winnerState;
+          [1, 2, 3, 4].forEach(r => updateWinnerToggleUI(r));
+        }
         Object.keys(data).forEach(id => {
           const el = document.getElementById(id);
-          if (el) el.value = data[id];
+          if (el && id !== "winnerState") el.value = data[id];
         });
       }
     }
 
     function resetData() {
-      if (confirm("Are you sure you want to reset all round scores?")) {
+      if (confirm("Are you sure you want to reset all round scores and team selections?")) {
         localStorage.removeItem("niaf_input_cache");
+        winnerState = { 1: null, 2: null, 3: null, 4: null };
+        [1, 2, 3, 4].forEach(r => updateWinnerToggleUI(r));
         document.querySelectorAll("input").forEach(i => i.value = "");
         calculateStandings();
       }
