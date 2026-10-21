@@ -35,7 +35,7 @@
 
     /* HEADER BANNER WITH ONION CREEK HERO IMAGE */
     header {
-      background: linear-gradient(180deg, rgba(4, 26, 18, 0.82) 0%, rgba(10, 56, 37, 0.92) 100%),
+      background: linear-gradient(180deg, rgba(4, 26, 18, 0.85) 0%, rgba(10, 56, 37, 0.95) 100%),
                   url('https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
       color: white;
       text-align: center;
@@ -49,32 +49,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 15px;
       margin-bottom: 15px;
-    }
-
-    /* PRIDE FLAG GOLF FLAGS */
-    .pride-flag-icon {
-      width: 42px;
-      height: 28px;
-      background: linear-gradient(
-        to bottom,
-        #e74c3c 0% 16.6%,
-        #e67e22 16.6% 33.3%,
-        #f1c40f 33.3% 50%,
-        #2ecc71 50% 66.6%,
-        #3498db 66.6% 83.3%,
-        #9b59b6 83.3% 100%
-      );
-      clip-path: polygon(0 0, 100% 15%, 85% 50%, 100% 85%, 0 100%);
-      border-left: 4px solid #dcdde1;
-      filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.4));
-      transform: rotate(-5deg);
-      transition: transform 0.3s ease;
-    }
-
-    .pride-flag-icon:hover {
-      transform: rotate(5deg) scale(1.1);
     }
 
     .badge-container {
@@ -123,6 +98,21 @@
       font-weight: 700;
     }
 
+    /* DEFENDING CHAMP BANNER */
+    .defending-champ-banner {
+      background: linear-gradient(135deg, var(--masters-gold) 0%, var(--masters-yellow) 100%);
+      color: var(--masters-dark);
+      text-align: center;
+      padding: 16px 20px;
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      border-bottom: 3px solid var(--masters-green);
+    }
+
     .container {
       max-width: 1050px;
       margin: 35px auto;
@@ -156,29 +146,7 @@
     .club-hero-info p {
       font-size: 0.9rem;
       color: var(--masters-light);
-      max-width: 600px;
-    }
-
-    /* EASTER EGG BADGE */
-    .easter-egg-tag {
-      background: rgba(242, 201, 76, 0.15);
-      border: 1px dashed var(--masters-gold);
-      color: var(--masters-yellow);
-      font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
-      padding: 8px 14px;
-      border-radius: 8px;
-      letter-spacing: 1px;
-      font-weight: 700;
-      white-space: nowrap;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .easter-egg-tag:hover {
-      background: var(--masters-yellow);
-      color: var(--masters-dark);
-      transform: scale(1.05);
+      max-width: 700px;
     }
 
     .section-title {
@@ -470,6 +438,7 @@
 
     @media (max-width: 768px) {
       header h1 { font-size: 2.2rem; }
+      .defending-champ-banner { font-size: 1.2rem; padding: 12px; }
       .cran-g-text { font-size: 4.2rem; }
       .club-hero-card { flex-direction: column; text-align: center; gap: 15px; }
       .team-select-grid { grid-template-columns: 1fr; }
@@ -482,27 +451,27 @@
 
   <header>
     <div class="header-logo-wrap">
-      <div class="pride-flag-icon" title="NIAF Pride Flag"></div>
       <div class="badge-container">
         <span class="tournament-badge">Not In A Frat</span>
       </div>
-      <div class="pride-flag-icon" title="NIAF Pride Flag"></div>
     </div>
     <h1>The NIAF Invitational</h1>
     <p class="sub">Annual Golf Championship</p>
     <p class="location">Onion Creek Club • Austin, Texas</p>
   </header>
 
+  <!-- DEFENDING CHAMPION BANNER -->
+  <div class="defending-champ-banner">
+    🏆 Reed Defending Champ 2026 🏆
+  </div>
+
   <div class="container">
 
-    <!-- ONION CREEK HERO SPOTLIGHT WITH EASTER EGG -->
+    <!-- ONION CREEK HERO SPOTLIGHT -->
     <div class="club-hero-card">
       <div class="club-hero-info">
         <h2>Onion Creek Club</h2>
         <p>Home of the Legends of Golf and birthplace of the PGA Tour Champions. Nestled along the shaded banks of Onion Creek in Austin, TX.</p>
-      </div>
-      <div class="easter-egg-tag" onclick="alert('🔑 Easter Egg Unlocked: Andrew is NF!')" title="Click for secret message">
-        🔑 Easter Egg: Andrew is NF
       </div>
     </div>
 
@@ -520,410 +489,4 @@
             <th>Player</th>
             <th style="text-align: center;">Team Pts</th>
             <th style="text-align: center;">Indiv Pts</th>
-            <th style="text-align: center;">Overall Net</th>
-            <th style="text-align: center;">Total Pts</th>
-          </tr>
-        </thead>
-        <tbody id="leaderboard-body">
-          <!-- Populated by JS -->
-        </tbody>
-      </table>
-    </div>
-
-    <!-- ROUND MANAGERS -->
-    <div class="section-title">
-      <span>Round Scoring & Results</span>
-    </div>
-
-    <!-- PRACTICE ROUND -->
-    <div class="round-card">
-      <div class="round-header">
-        <div class="round-title-wrap">
-          <div class="pride-flag-icon" style="width: 24px; height: 16px;"></div>
-          <span class="round-title">Practice Round</span>
-        </div>
-        <span class="round-badge" style="background:#7f8c8d;">Warm-Up</span>
-      </div>
-      <div class="round-body">
-        <p style="font-size: 0.9rem; color: var(--text-muted);">Scores in the practice round are for pride, scouting Onion Creek, and getting dialed in. No points awarded towards overall standings.</p>
-      </div>
-    </div>
-
-    <!-- ROUND 1 -->
-    <div class="round-card">
-      <div class="round-header">
-        <div class="round-title-wrap">
-          <div class="pride-flag-icon" style="width: 24px; height: 16px;"></div>
-          <span class="round-title">Round 1 — Team Match & Net</span>
-        </div>
-        <span class="round-badge">Standard Net</span>
-      </div>
-      <div class="round-body">
-        <div class="team-select-grid">
-          <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team A (2 pts each to winner):</label>
-            <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r1-t1p1"><option value="Reed">Reed</option><option value="Mike">Mike</option><option value="Brian">Brian</option><option value="Andrew">Andrew</option></select>
-              <select id="r1-t1p2"><option value="Mike" selected>Mike</option><option value="Reed">Reed</option><option value="Brian">Brian</option><option value="Andrew">Andrew</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team A Gross/Net Total:</label>
-              <input type="number" id="r1-t1-score" placeholder="Net Total" style="width: 110px;">
-            </div>
-          </div>
-          <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team B:</label>
-            <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r1-t2p1"><option value="Brian" selected>Brian</option><option value="Reed">Reed</option><option value="Mike">Mike</option><option value="Andrew">Andrew</option></select>
-              <select id="r1-t2p2"><option value="Andrew" selected>Andrew</option><option value="Reed">Reed</option><option value="Mike">Mike</option><option value="Brian">Brian</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team B Gross/Net Total:</label>
-              <input type="number" id="r1-t2-score" placeholder="Net Total" style="width: 110px;">
-            </div>
-          </div>
-        </div>
-
-        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Individual Net Scores (Points: 1st=4, 2nd=3, 3rd=2, 4th=1):</label>
-        <div class="input-grid">
-          <div class="input-group"><label>Reed</label><input type="number" id="r1-score-Reed" placeholder="Net Score"></div>
-          <div class="input-group"><label>Mike</label><input type="number" id="r1-score-Mike" placeholder="Net Score"></div>
-          <div class="input-group"><label>Brian</label><input type="number" id="r1-score-Brian" placeholder="Net Score"></div>
-          <div class="input-group"><label>Andrew</label><input type="number" id="r1-score-Andrew" placeholder="Net Score"></div>
-        </div>
-        <button class="btn" onclick="saveRound(1)">Save Round 1</button>
-      </div>
-    </div>
-
-    <!-- ROUND 2 -->
-    <div class="round-card">
-      <div class="round-header">
-        <div class="round-title-wrap">
-          <div class="pride-flag-icon" style="width: 24px; height: 16px;"></div>
-          <span class="round-title">Round 2 — Drunk Round Scramble</span>
-        </div>
-        <span class="round-badge scramble">Team Points Only</span>
-      </div>
-      <div class="round-body">
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">No individual net points awarded for Round 2. Winning team gets 2 team points each.</p>
-        <div class="team-select-grid">
-          <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team A:</label>
-            <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r2-t1p1"><option value="Reed">Reed</option><option value="Brian" selected>Brian</option></select>
-              <select id="r2-t1p2"><option value="Brian" selected>Brian</option><option value="Reed">Reed</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team A Scramble Score:</label>
-              <input type="number" id="r2-t1-score" placeholder="Score" style="width: 110px;">
-            </div>
-          </div>
-          <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team B:</label>
-            <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r2-t2p1"><option value="Mike" selected>Mike</option></select>
-              <select id="r2-t2p2"><option value="Andrew" selected>Andrew</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team B Scramble Score:</label>
-              <input type="number" id="r2-t2-score" placeholder="Score" style="width: 110px;">
-            </div>
-          </div>
-        </div>
-        <button class="btn" onclick="saveRound(2)">Save Round 2</button>
-      </div>
-    </div>
-
-    <!-- ROUND 3 -->
-    <div class="round-card">
-      <div class="round-header">
-        <div class="round-title-wrap">
-          <div class="pride-flag-icon" style="width: 24px; height: 16px;"></div>
-          <span class="round-title">Round 3 — Team Match & Net</span>
-        </div>
-        <span class="round-badge">Standard Net</span>
-      </div>
-      <div class="round-body">
-        <div class="team-select-grid">
-          <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team A:</label>
-            <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r3-t1p1"><option value="Reed">Reed</option><option value="Andrew">Andrew</option></select>
-              <select id="r3-t1p2"><option value="Andrew" selected>Andrew</option><option value="Reed">Reed</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team A Net Total:</label>
-              <input type="number" id="r3-t1-score" placeholder="Net Total" style="width: 110px;">
-            </div>
-          </div>
-          <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team B:</label>
-            <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r3-t2p1"><option value="Mike" selected>Mike</option></select>
-              <select id="r3-t2p2"><option value="Brian" selected>Brian</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team B Net Total:</label>
-              <input type="number" id="r3-t2-score" placeholder="Net Total" style="width: 110px;">
-            </div>
-          </div>
-        </div>
-
-        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Individual Net Scores:</label>
-        <div class="input-grid">
-          <div class="input-group"><label>Reed</label><input type="number" id="r3-score-Reed" placeholder="Net Score"></div>
-          <div class="input-group"><label>Mike</label><input type="number" id="r3-score-Mike" placeholder="Net Score"></div>
-          <div class="input-group"><label>Brian</label><input type="number" id="r3-score-Brian" placeholder="Net Score"></div>
-          <div class="input-group"><label>Andrew</label><input type="number" id="r3-score-Andrew" placeholder="Net Score"></div>
-        </div>
-        <button class="btn" onclick="saveRound(3)">Save Round 3</button>
-      </div>
-    </div>
-
-    <!-- ROUND 4 -->
-    <div class="round-card">
-      <div class="round-header">
-        <div class="round-title-wrap">
-          <div class="pride-flag-icon" style="width: 24px; height: 16px;"></div>
-          <span class="round-title">Round 4 — Team Match & Net</span>
-        </div>
-        <span class="round-badge">Standard Net</span>
-      </div>
-      <div class="round-body">
-        <div class="team-select-grid">
-          <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team A:</label>
-            <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r4-t1p1"><option value="Reed">Reed</option><option value="Mike">Mike</option></select>
-              <select id="r4-t1p2"><option value="Mike" selected>Mike</option><option value="Reed">Reed</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team A Net Total:</label>
-              <input type="number" id="r4-t1-score" placeholder="Net Total" style="width: 110px;">
-            </div>
-          </div>
-          <div>
-            <label style="font-weight: bold; font-size: 0.85rem;">Team B:</label>
-            <div style="display: flex; gap: 10px; margin-top: 5px;">
-              <select id="r4-t2p1"><option value="Brian" selected>Brian</option></select>
-              <select id="r4-t2p2"><option value="Andrew" selected>Andrew</option></select>
-            </div>
-            <div style="margin-top: 8px;">
-              <label style="font-size: 0.8rem;">Team B Net Total:</label>
-              <input type="number" id="r4-t2-score" placeholder="Net Total" style="width: 110px;">
-            </div>
-          </div>
-        </div>
-
-        <label style="font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 8px;">Individual Net Scores:</label>
-        <div class="input-grid">
-          <div class="input-group"><label>Reed</label><input type="number" id="r4-score-Reed" placeholder="Net Score"></div>
-          <div class="input-group"><label>Mike</label><input type="number" id="r4-score-Mike" placeholder="Net Score"></div>
-          <div class="input-group"><label>Brian</label><input type="number" id="r4-score-Brian" placeholder="Net Score"></div>
-          <div class="input-group"><label>Andrew</label><input type="number" id="r4-score-Andrew" placeholder="Net Score"></div>
-        </div>
-        <button class="btn" onclick="saveRound(4)">Save Round 4</button>
-      </div>
-    </div>
-
-    <!-- ROUND 5 -->
-    <div class="round-card">
-      <div class="round-header">
-        <div class="round-title-wrap">
-          <div class="pride-flag-icon" style="width: 24px; height: 16px;"></div>
-          <span class="round-title">Round 5 — Championship Final</span>
-        </div>
-        <span class="round-badge" style="background:#d4af37; color:#000;">High Stakes</span>
-      </div>
-      <div class="round-body">
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">Individual Net Round Only (No Teams). Points: 1st=6, 2nd=4, 3rd=2, 4th=0.</p>
-        <div class="input-grid">
-          <div class="input-group"><label>Reed</label><input type="number" id="r5-score-Reed" placeholder="Net Score"></div>
-          <div class="input-group"><label>Mike</label><input type="number" id="r5-score-Mike" placeholder="Net Score"></div>
-          <div class="input-group"><label>Brian</label><input type="number" id="r5-score-Brian" placeholder="Net Score"></div>
-          <div class="input-group"><label>Andrew</label><input type="number" id="r5-score-Andrew" placeholder="Net Score"></div>
-        </div>
-        <button class="btn" onclick="saveRound(5)">Save Final Round</button>
-      </div>
-    </div>
-
-    <!-- RULES REFERENCE -->
-    <div class="rules-card">
-      <h3>NIAF Invitational Official Rules</h3>
-      <ul>
-        <li><strong>Rounds 1, 3, 4:</strong> Winning Team = 2 pts each player. Individual Net: 1st=4, 2nd=3, 3rd=2, 4th=1.</li>
-        <li><strong>Round 2 (Drunk Scramble):</strong> Winning Team = 2 pts each player. No individual net points.</li>
-        <li><strong>Round 5 (Final Round):</strong> No team points. Individual Net: 1st=6, 2nd=4, 3rd=2, 4th=0.</li>
-        <li><strong>Overall 5-Round Low Net Bonus:</strong> Awarded automatically at the end: 1st=6, 2nd=4, 3rd=2, 4th=0.</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- REALLY BIG CRAN G FOOTER -->
-  <footer class="cran-g-footer">
-    <div class="cran-g-text">CRAN G</div>
-    <div class="cran-g-sub">Onion Creek Club • The NIAF Invitational</div>
-  </footer>
-
-  <script>
-    const PLAYERS = ["Reed", "Mike", "Brian", "Andrew"];
-
-    function calculateStandings() {
-      let stats = {};
-      PLAYERS.forEach(p => {
-        stats[p] = { name: p, teamPts: 0, indPts: 0, overallBonusPts: 0, totalNetScore: 0, roundsPlayed: 0 };
-      });
-
-      // R1 - R4 Team Points
-      [1, 2, 3, 4].forEach(r => {
-        const t1Score = parseFloat(document.getElementById(`r${r}-t1-score`).value);
-        const t2Score = parseFloat(document.getElementById(`r${r}-t2-score`).value);
-
-        if (!isNaN(t1Score) && !isNaN(t2Score)) {
-          let winningPlayers = [];
-          if (t1Score < t2Score) {
-            winningPlayers = [document.getElementById(`r${r}-t1p1`).value, document.getElementById(`r${r}-t1p2`).value];
-          } else if (t2Score < t1Score) {
-            winningPlayers = [document.getElementById(`r${r}-t2p1`).value, document.getElementById(`r${r}-t2p2`).value];
-          }
-          winningPlayers.forEach(p => { if (stats[p]) stats[p].teamPts += 2; });
-        }
-      });
-
-      // Individual Net Points for R1, R3, R4
-      [1, 3, 4].forEach(r => {
-        let scores = [];
-        PLAYERS.forEach(p => {
-          const val = parseFloat(document.getElementById(`r${r}-score-${p}`).value);
-          if (!isNaN(val)) {
-            scores.push({ player: p, score: val });
-            stats[p].totalNetScore += val;
-            stats[p].roundsPlayed += 1;
-          }
-        });
-
-        scores.sort((a, b) => a.score - b.score);
-        const ptsMap = [4, 3, 2, 1];
-        scores.forEach((item, index) => {
-          if (index < ptsMap.length) {
-            stats[item.player].indPts += ptsMap[index];
-          }
-        });
-      });
-
-      // Round 5 Individual Net
-      let r5Scores = [];
-      PLAYERS.forEach(p => {
-        const val = parseFloat(document.getElementById(`r5-score-${p}`).value);
-        if (!isNaN(val)) {
-          r5Scores.push({ player: p, score: val });
-          stats[p].totalNetScore += val;
-          stats[p].roundsPlayed += 1;
-        }
-      });
-
-      r5Scores.sort((a, b) => a.score - b.score);
-      const r5PtsMap = [6, 4, 2, 0];
-      r5Scores.forEach((item, index) => {
-        if (index < r5PtsMap.length) {
-          stats[item.player].indPts += r5PtsMap[index];
-        }
-      });
-
-      // Overall Low Net Bonus
-      let allNetRoundsComplete = PLAYERS.every(p => stats[p].roundsPlayed >= 4);
-      if (allNetRoundsComplete) {
-        let netTotals = PLAYERS.map(p => ({ player: p, totalNet: stats[p].totalNetScore }));
-        netTotals.sort((a, b) => a.totalNet - b.totalNet);
-        const overallBonusMap = [6, 4, 2, 0];
-        netTotals.forEach((item, index) => {
-          if (index < overallBonusMap.length) {
-            stats[item.player].overallBonusPts = overallBonusMap[index];
-          }
-        });
-      }
-
-      // Format array for render
-      let standings = PLAYERS.map(p => {
-        const totalPts = stats[p].teamPts + stats[p].indPts + stats[p].overallBonusPts;
-        return {
-          name: p,
-          teamPts: stats[p].teamPts,
-          indPts: stats[p].indPts + stats[p].overallBonusPts,
-          overallNet: stats[p].roundsPlayed > 0 ? stats[p].totalNetScore : "—",
-          totalPts: totalPts
-        };
-      });
-
-      standings.sort((a, b) => b.totalPts - a.totalPts || (typeof a.overallNet === 'number' ? a.overallNet - b.overallNet : 0));
-
-      renderLeaderboard(standings);
-    }
-
-    function renderLeaderboard(standings) {
-      const tbody = document.getElementById("leaderboard-body");
-      tbody.innerHTML = "";
-
-      standings.forEach((item, idx) => {
-        const tr = document.createElement("tr");
-        if (idx === 0) tr.classList.add("leader-row");
-
-        tr.innerHTML = `
-          <td class="rank">${idx + 1}</td>
-          <td class="player-name">
-            ${item.name}
-            ${idx === 0 ? '<span class="leader-badge">Leader</span>' : ''}
-          </td>
-          <td style="text-align: center;" class="pts-cell">${item.teamPts}</td>
-          <td style="text-align: center;" class="pts-cell">${item.indPts}</td>
-          <td style="text-align: center;" class="net-score">${item.overallNet}</td>
-          <td style="text-align: center;" class="total-pts">${item.totalPts}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function saveRound(roundNum) {
-      calculateStandings();
-      saveInputsToStorage();
-      alert(`Round ${roundNum} scores saved & standings updated!`);
-    }
-
-    function saveInputsToStorage() {
-      const inputs = document.querySelectorAll("input, select");
-      const data = {};
-      inputs.forEach(input => {
-        if (input.id) data[input.id] = input.value;
-      });
-      localStorage.setItem("niaf_input_cache", JSON.stringify(data));
-    }
-
-    function loadInputsFromStorage() {
-      const cached = localStorage.getItem("niaf_input_cache");
-      if (cached) {
-        const data = JSON.parse(cached);
-        Object.keys(data).forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.value = data[id];
-        });
-      }
-    }
-
-    function resetData() {
-      if (confirm("Are you sure you want to reset all round scores?")) {
-        localStorage.removeItem("niaf_input_cache");
-        document.querySelectorAll("input").forEach(i => i.value = "");
-        calculateStandings();
-      }
-    }
-
-    document.addEventListener("input", calculateStandings);
-
-    window.onload = () => {
-      loadInputsFromStorage();
-      calculateStandings();
-    };
-  </script>
-</body>
-</html>
+            <th style="text-align: center
