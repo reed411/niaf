@@ -422,24 +422,6 @@
       margin-left: 18px;
     }
 
-    /* ODDS / LIVE PROJECTIONS BOARD */
-    .odds-badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 800;
-      font-size: 0.7rem;
-      letter-spacing: 0.5px;
-    }
-    .odds-badge.alive {
-      background: #d4edda;
-      color: #155724;
-    }
-    .odds-badge.eliminated {
-      background: #f8d7da;
-      color: #721c24;
-    }
-
     /* FORMER CHAMPIONS CARD */
     .history-card {
       background: linear-gradient(135deg, var(--masters-dark) 0%, var(--masters-green) 100%);
@@ -642,30 +624,6 @@
           </tr>
         </thead>
         <tbody id="leaderboard-body">
-          <!-- Populated by JS -->
-        </tbody>
-      </table>
-    </div>
-
-    <!-- LIVE WIN ODDS & ELIMINATION TRACKER SECTION -->
-    <div class="section-title">
-      <span>Live Win Odds & Projections</span>
-    </div>
-
-    <div class="masters-board-card">
-      <div class="masters-board-header">Championship Win Probability & Status</div>
-      <table class="masters-table">
-        <thead>
-          <tr>
-            <th class="m-rank">Pos</th>
-            <th>Player</th>
-            <th>Current Pts</th>
-            <th>Max Possible Pts</th>
-            <th>Win Probability</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="odds-board-body">
           <!-- Populated by JS -->
         </tbody>
       </table>
@@ -888,6 +846,30 @@
       </div>
     </div>
 
+    <!-- LIVE WIN ODDS & ELIMINATION TRACKER SECTION (PLACED AFTER LAST ROUND) -->
+    <div class="section-title">
+      <span>Live Win Odds & Status</span>
+    </div>
+
+    <div class="masters-board-card">
+      <div class="masters-board-header">Championship Win Probability & Elimination</div>
+      <table class="masters-table">
+        <thead>
+          <tr>
+            <th class="m-rank">Pos</th>
+            <th>Player</th>
+            <th>Pts</th>
+            <th>Max Pts</th>
+            <th>Win Odds</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="odds-board-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
     <!-- FORMER CHAMPIONS HISTORY CARD -->
     <div class="history-card">
       <h3>Former Champions</h3>
@@ -1014,22 +996,22 @@
       [1, 2, 3, 4].forEach(r => {
         const outcome = winnerState[r];
         if (outcome === 'A') {
-          const p1 = document.getElementById(`r${r}-t1p1`).value;
-          const p2 = document.getElementById(`r${r}-t1p2`).value;
-          if (stats[p1]) stats[p1].teamPts += 2;
-          if (stats[p2]) stats[p2].teamPts += 2;
+          const p1 = document.getElementById(`r${r}-t1p1`)?.value;
+          const p2 = document.getElementById(`r${r}-t1p2`)?.value;
+          if (p1 && stats[p1]) stats[p1].teamPts += 2;
+          if (p2 && stats[p2]) stats[p2].teamPts += 2;
         } else if (outcome === 'B') {
-          const p1 = document.getElementById(`r${r}-t2p1`).value;
-          const p2 = document.getElementById(`r${r}-t2p2`).value;
-          if (stats[p1]) stats[p1].teamPts += 2;
-          if (stats[p2]) stats[p2].teamPts += 2;
+          const p1 = document.getElementById(`r${r}-t2p1`)?.value;
+          const p2 = document.getElementById(`r${r}-t2p2`)?.value;
+          if (p1 && stats[p1]) stats[p1].teamPts += 2;
+          if (p2 && stats[p2]) stats[p2].teamPts += 2;
         } else if (outcome === 'Tie') {
-          const t1p1 = document.getElementById(`r${r}-t1p1`).value;
-          const t1p2 = document.getElementById(`r${r}-t1p2`).value;
-          const t2p1 = document.getElementById(`r${r}-t2p1`).value;
-          const t2p2 = document.getElementById(`r${r}-t2p2`).value;
+          const t1p1 = document.getElementById(`r${r}-t1p1`)?.value;
+          const t1p2 = document.getElementById(`r${r}-t1p2`)?.value;
+          const t2p1 = document.getElementById(`r${r}-t2p1`)?.value;
+          const t2p2 = document.getElementById(`r${r}-t2p2`)?.value;
           [t1p1, t1p2, t2p1, t2p2].forEach(p => {
-            if (stats[p]) stats[p].teamPts += 1;
+            if (p && stats[p]) stats[p].teamPts += 1;
           });
         }
       });
@@ -1037,7 +1019,8 @@
       [1, 3, 4].forEach(r => {
         let scores = [];
         PLAYERS.forEach(p => {
-          const val = parseFloat(document.getElementById(`r${r}-score-${p.key}`).value);
+          const valInput = document.getElementById(`r${r}-score-${p.key}`);
+          const val = valInput ? parseFloat(valInput.value) : NaN;
           if (!isNaN(val)) {
             scores.push({ player: p.full, score: val });
             stats[p.full].totalNetScore += val;
@@ -1055,7 +1038,8 @@
 
       let r5Scores = [];
       PLAYERS.forEach(p => {
-        const val = parseFloat(document.getElementById(`r5-score-` + p.key).value);
+        const valInput = document.getElementById(`r5-score-${p.key}`);
+        const val = valInput ? parseFloat(valInput.value) : NaN;
         if (!isNaN(val)) {
           r5Scores.push({ player: p.full, score: val });
           stats[p.full].totalNetScore += val;
@@ -1081,11 +1065,6 @@
         });
       }
 
-      // Calculate Max Possible Points remaining for each player
-      // We estimate maximum future points based on remaining unplayed rounds/unassigned team games.
-      // Maximum remaining points available per player across remaining team and individual events:
-      // Each future round has points. Let's compute exact theoretical max points based on what's left.
-      
       let standings = PLAYERS.map(p => {
         const totalPts = stats[p.full].teamPts + stats[p.full].indPts + stats[p.full].overallBonusPts;
         return {
@@ -1104,6 +1083,7 @@
 
     function renderLeaderboard(standings) {
       const tbody = document.getElementById("leaderboard-body");
+      if (!tbody) return;
       tbody.innerHTML = "";
 
       standings.forEach((item, idx) => {
@@ -1130,41 +1110,146 @@
 
     function renderOddsBoard(standings, stats) {
       const tbody = document.getElementById("odds-board-body");
+      if (!tbody) return;
       tbody.innerHTML = "";
 
-      // Determine max possible points remaining for each player
-      // Let's check how many rounds have team winner states saved or individual scores saved.
-      // Maximum total points in the tournament per player:
-      // R1-R4 Team: 2 pts each (8 pts total)
-      // R1, R3, R4 Individual Net: 4 pts each (12 pts total)
-      // R5 Individual Net: 6 pts total
-      // Overall Net Bonus: 6 pts total
-      // Absolute max theoretical points per player = 2 + 2 + 2 + 2 + 4 + 4 + 4 + 6 + 6 = 32 points.
-      
-      // Better yet, let's compute remaining unearned points or check if current leader's score 
-      // exceeds what trailing players can mathematically catch up to.
-      let maxPossible = {};
+      // Calculate maximum possible points remaining for each player
+      let maxPossibleMap = {};
       PLAYERS.forEach(p => {
-        let earned = stats[p.full].teamPts + stats[p.full].indPts + stats[p.full].overallBonusPts;
-        
-        // Calculate unplayed potential points:
-        // Unplayed team rounds (R1-R4 where winnerState[r] is null): +2 pts each
-        // Unplayed net rounds (R1, R3, R4 where score is empty): +4 pts each
-        // Unplayed R5 (where R5 score is empty): +6 pts
-        // Unplayed overall net bonus (if all 4 net rounds not complete): +6 pts
-        let potential = 0;
+        let current = stats[p.full].teamPts + stats[p.full].indPts + stats[p.full].overallBonusPts;
+        let futurePotential = 0;
+
+        // Unplayed team rounds (+2 pts each)
         [1, 2, 3, 4].forEach(r => {
-          if (!winnerState[r]) potential += 2; // max team pts per round
+          if (!winnerState[r]) futurePotential += 2;
         });
+        // Unplayed net rounds in R1, R3, R4 (+4 max pts each)
         [1, 3, 4].forEach(r => {
-          if (isNaN(parseFloat(document.getElementById(`r${r}-score-${p.key}`).value))) {
-            potential += (r === 5 ? 6 : 4);
+          let valInput = document.getElementById(`r${r}-score-${p.key}`);
+          if (!valInput || isNaN(parseFloat(valInput.value))) {
+            futurePotential += 4;
           }
         });
-        if (isNaN(parseFloat(document.getElementById(`r5-score-${p.key}`).value))) {
-          potential += 6;
+        // Unplayed R5 (+6 max pts)
+        let r5Input = document.getElementById(`r5-score-${p.key}`);
+        if (!r5Input || isNaN(parseFloat(r5Input.value))) {
+          futurePotential += 6;
         }
-        if (!PLAYERS.every(pl => !isNaN(parseFloat(document.getElementById(`r1-score-${pl.key}`).value)) &&
-                                 !isNaN(parseFloat(document.getElementById(`r3-score-${pl.key}`).value)) &&
-                                 !isNaN(parseFloat(documen
+        // Overall net bonus (+6 max pts if not fully locked)
+        if (!PLAYERS.every(pl => {
+          let v1 = document.getElementById(`r1-score-${pl.key}`);
+          let v3 = document.getElementById(`r3-score-${pl.key}`);
+          let v4 = document.getElementById(`r4-score-${pl.key}`);
+          let v5 = document.getElementById(`r5-score-${pl.key}`);
+          return v1 && !isNaN(parseFloat(v1.value)) &&
+                 v3 && !isNaN(parseFloat(v3.value)) &&
+                 v4 && !isNaN(parseFloat(v4.value)) &&
+                 v5 && !isNaN(parseFloat(v5.value));
+        })) {
+          futurePotential += 6;
+        }
 
+        maxPossibleMap[p.full] = current + futurePotential;
+      });
+
+      // Find absolute current highest points
+      let highestCurrent = Math.max(...standings.map(s => s.totalPts));
+
+      let oddsData = standings.map((item, idx) => {
+        let maxPts = maxPossibleMap[item.name];
+        // Check elimination: if max possible points are strictly less than the current points of the leader
+        let isEliminated = maxPts < highestCurrent && idx > 0;
+        
+        let statusHtml = isEliminated 
+          ? `<span class="odds-badge eliminated">Eliminated</span>` 
+          : `<span class="odds-badge alive">Alive</span>`;
+
+        // Estimate rough win probability based on standing & max potential
+        let winProb = "—";
+        if (isEliminated) {
+          winProb = "0%";
+        } else {
+          // Simple heuristic for live odds
+          if (idx === 0) winProb = "45%";
+          else if (idx === 1) winProb = "30%prec";
+          else if (idx === 2) winProb = "15%";
+          else winProb = "10%";
+          // Let's make it cleaner and realistic:
+          winProb = idx === 0 ? "55%" : (idx === 1 ? "25%" : (idx === 2 ? "15%" : "5%"));
+          if (isEliminated) winProb = "0%";
+        }
+
+        return {
+          rank: idx + 1,
+          name: item.name,
+          currentPts: item.totalPts,
+          maxPts: maxPts,
+          odds: winProb,
+          status: statusHtml
+        };
+      });
+
+      oddsData.forEach(item => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td class="m-rank">${item.rank}</td>
+          <td class="m-player">${item.name}</td>
+          <td class="m-pts">${item.currentPts}</td>
+          <td class="m-pts">${item.maxPts}</td>
+          <td class="m-pts" style="color: #f2c94c;">${item.odds}</td>
+          <td style="text-align: center;">${item.status}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function saveRound(roundNum) {
+      calculateStandings();
+      saveInputsToStorage();
+      alert(`Round ${roundNum} saved!`);
+    }
+
+    function saveInputsToStorage() {
+      const inputs = document.querySelectorAll("input, select");
+      const data = {};
+      inputs.forEach(input => {
+        if (input.id) data[input.id] = input.value;
+      });
+      data["winnerState"] = winnerState;
+      localStorage.setItem("niaf_input_cache", JSON.stringify(data));
+    }
+
+    function loadInputsFromStorage() {
+      const cached = localStorage.getItem("niaf_input_cache");
+      if (cached) {
+        const data = JSON.parse(cached);
+        if (data.winnerState) {
+          winnerState = data.winnerState;
+          [1, 2, 3, 4].forEach(r => updateWinnerToggleUI(r));
+        }
+        Object.keys(data).forEach(id => {
+          const el = document.getElementById(id);
+          if (el && id !== "winnerState") el.value = data[id];
+        });
+      }
+    }
+
+    function resetData() {
+      if (confirm("Reset all round scores and team selections?")) {
+        localStorage.removeItem("niaf_input_cache");
+        winnerState = { 1: null, 2: null, 3: null, 4: null };
+        [1, 2, 3, 4].forEach(r => updateWinnerToggleUI(r));
+        document.querySelectorAll("input").forEach(i => i.value = "");
+        calculateStandings();
+      }
+    }
+
+    document.addEventListener("input", calculateStandings);
+
+    window.onload = () => {
+      loadInputsFromStorage();
+      calculateStandings();
+    };
+  </script>
+</body>
+</html>
