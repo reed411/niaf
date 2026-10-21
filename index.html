@@ -98,6 +98,20 @@
       font-weight: 700;
     }
 
+    /* MOTTO SUB-HEADER */
+    .motto-banner {
+      background-color: #041f13;
+      color: #f2c94c;
+      text-align: center;
+      padding: 10px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      border-bottom: 2px solid var(--masters-gold);
+    }
+
     /* DEFENDING CHAMP BANNER */
     .defending-champ-banner {
       background: linear-gradient(135deg, var(--masters-gold) 0%, var(--masters-yellow) 100%);
@@ -117,36 +131,6 @@
       max-width: 1050px;
       margin: 35px auto;
       padding: 0 20px;
-    }
-
-    /* ONION CREEK HERO CARD */
-    .club-hero-card {
-      background: linear-gradient(135deg, rgba(10, 56, 37, 0.95), rgba(4, 26, 18, 0.95)),
-                  url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1200&auto=format&fit=crop') center/cover;
-      color: white;
-      border-radius: var(--radius);
-      padding: 25px 30px;
-      margin-bottom: 35px;
-      border: 1px solid var(--masters-gold);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .club-hero-info h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 1.8rem;
-      color: var(--masters-yellow);
-      margin-bottom: 5px;
-    }
-
-    .club-hero-info p {
-      font-size: 0.9rem;
-      color: var(--masters-light);
-      max-width: 700px;
     }
 
     .section-title {
@@ -486,7 +470,18 @@
       color: #ffffff;
     }
 
-    /* REALLY BIG CRAN G FOOTER WITH SUBTLE EASTER EGG */
+    /* VERY FAINT EASTER EGG BETWEEN ROUND CARDS */
+    .faint-easter-egg {
+      text-align: center;
+      font-size: 0.55rem;
+      color: rgba(28, 43, 34, 0.12);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      user-select: none;
+      margin: 15px 0;
+    }
+
+    /* REALLY BIG CRAN G FOOTER */
     footer.cran-g-footer {
       background: linear-gradient(180deg, var(--masters-green) 0%, var(--masters-dark) 100%);
       color: var(--masters-yellow);
@@ -496,14 +491,6 @@
       position: relative;
       overflow: hidden;
       margin-top: 40px;
-    }
-
-    .subtle-easter-egg {
-      font-size: 0.65rem;
-      color: rgba(240, 237, 228, 0.25);
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      user-select: none;
     }
 
     .cran-g-text {
@@ -540,7 +527,6 @@
       header h1 { font-size: 2.2rem; }
       .defending-champ-banner { font-size: 1.2rem; padding: 12px; }
       .cran-g-text { font-size: 4.2rem; }
-      .club-hero-card { flex-direction: column; text-align: center; gap: 15px; }
       .team-select-grid { grid-template-columns: 1fr; }
       .input-grid { grid-template-columns: 1fr 1fr; }
       th, td { padding: 12px 10px; font-size: 0.85rem; }
@@ -560,20 +546,17 @@
     <p class="location">Onion Creek Club • Austin, Texas</p>
   </header>
 
+  <!-- MOTTO BANNER -->
+  <div class="motto-banner">
+    "A dition unlike any other"
+  </div>
+
   <!-- DEFENDING CHAMPION BANNER -->
   <div class="defending-champ-banner">
     🏆 Reed Campbell — Defending Champion 2025 🏆
   </div>
 
   <div class="container">
-
-    <!-- ONION CREEK HERO SPOTLIGHT -->
-    <div class="club-hero-card">
-      <div class="club-hero-info">
-        <h2>Onion Creek Club</h2>
-        <p>Home of the Legends of Golf and birthplace of the PGA Tour Champions. Nestled along the shaded banks of Onion Creek in Austin, TX.</p>
-      </div>
-    </div>
 
     <!-- AUTHENTIC MASTERS LEADERBOARD -->
     <div class="section-title">
@@ -612,7 +595,6 @@
           <tr>
             <th class="m-rank">Pos</th>
             <th>Player</th>
-            <th style="text-align: center;">Rounds Recorded</th>
             <th style="text-align: center;">Cumulative Net Score</th>
           </tr>
         </thead>
@@ -639,6 +621,8 @@
         <p style="font-size: 0.9rem; color: var(--text-muted);">Scores in the practice round are for pride, scouting Onion Creek, and getting dialed in. No points awarded towards overall standings.</p>
       </div>
     </div>
+
+    <div class="faint-easter-egg">andrew is nf</div>
 
     <!-- ROUND 1 -->
     <div class="round-card">
@@ -683,6 +667,8 @@
       </div>
     </div>
 
+    <div class="faint-easter-egg">andrew is nf</div>
+
     <!-- ROUND 2 -->
     <div class="round-card">
       <div class="round-header">
@@ -718,6 +704,8 @@
         <button class="btn" style="margin-top: 15px;" onclick="saveRound(2)">Save Round 2</button>
       </div>
     </div>
+
+    <div class="faint-easter-egg">andrew is nf</div>
 
     <!-- ROUND 3 -->
     <div class="round-card">
@@ -762,6 +750,8 @@
       </div>
     </div>
 
+    <div class="faint-easter-egg">andrew is nf</div>
+
     <!-- ROUND 4 -->
     <div class="round-card">
       <div class="round-header">
@@ -804,6 +794,8 @@
         <button class="btn" onclick="saveRound(4)">Save Round 4</button>
       </div>
     </div>
+
+    <div class="faint-easter-egg">andrew is nf</div>
 
     <!-- ROUND 5 -->
     <div class="round-card">
@@ -865,9 +857,8 @@
 
   </div>
 
-  <!-- REALLY BIG CRAN G FOOTER WITH SUBTLE EASTER EGG -->
+  <!-- REALLY BIG CRAN G FOOTER -->
   <footer class="cran-g-footer">
-    <div class="subtle-easter-egg">Andrew is NF</div>
     <div class="cran-g-text">CRAN G</div>
     <div class="cran-g-sub">Onion Creek Club • The NIAF Invitational</div>
   </footer>
@@ -997,7 +988,6 @@
       // Format array for Net Standings board
       let netStandings = PLAYERS.map(p => ({
         name: p.full,
-        rounds: stats[p.full].roundsPlayed,
         netScore: stats[p.full].roundsPlayed > 0 ? stats[p.full].totalNetScore : 9999
       }));
 
@@ -1047,7 +1037,6 @@
         tr.innerHTML = `
           <td class="m-rank">${idx + 1}</td>
           <td class="m-player">${item.name} ${statusBadge}</td>
-          <td class="m-pts">${item.rounds} / 4 Net Rounds</td>
           <td class="m-net">${formattedNet}</td>
         `;
         tbody.appendChild(tr);
